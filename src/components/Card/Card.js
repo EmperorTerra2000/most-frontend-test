@@ -3,6 +3,8 @@ import './Card.css';
 import { Link } from 'react-router-dom';
 
 function Card({ data }) {
+  const pathUrl = '/product/?key=' + data.id;
+
   const styleLinkMoreDetails = {
     textDecoration: 'none',
     display: 'block',
@@ -26,18 +28,18 @@ function Card({ data }) {
   return (
     <>
       <figure className="card">
-        <Link to={'pathUrl'} style={styleLinkImg}>
+        <Link to={pathUrl} style={styleLinkImg}>
           <img className="card__img" src={data.images[0]} alt={data.title} />{' '}
         </Link>
         <figcaption className="card__block">
-          <Link to={'pathUrl'} style={styleLinkName}>
+          <Link to={pathUrl} style={styleLinkName}>
             <p className="card__name">{data.title}</p>
           </Link>
           <p className="card__price">
             {data.price}$ (-{data.discountPercentage}%)
           </p>
           <div className="card__section">
-            <Link to={'pathUrl'} style={styleLinkMoreDetails}>
+            <Link to={pathUrl} style={styleLinkMoreDetails}>
               Подробнее
             </Link>
           </div>

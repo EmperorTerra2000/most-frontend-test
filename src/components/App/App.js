@@ -1,6 +1,7 @@
 import './App.css';
 import '../defaultStyle.css';
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 
 import Header from '../Header/Header';
 import ListProd from '../ListProd/ListProd';
@@ -15,8 +16,12 @@ function App() {
         isOpen={'isNavMenuOpen'}
         onClose={'closeNavMenu'}
       />
-      <ListProd />
-      {/* <Main /> */}
+
+      <Routes>
+        <Route path="/" element={<ListProd />} />
+        <Route path="/product/*" element={<ListProd />} />
+        <Route path="*" element={<div>Not found App</div>} />
+      </Routes>
       <Footer />
     </div>
   );

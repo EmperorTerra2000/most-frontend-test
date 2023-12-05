@@ -24,7 +24,7 @@ function ListProdContent({
       <section className="list-prod-content">
         <div className="list-prod-content__content">
           <ul className="list-prod-content__list">
-            {cards && cards.map((item, index) => <Card data={item} />)}
+            {cards && cards.map((item, index) => <Card key={item.id} data={item} />)}
           </ul>
         </div>
       </section>
