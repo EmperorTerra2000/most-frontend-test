@@ -3,6 +3,7 @@ import '../defaultStyle.css';
 import React from 'react';
 
 import Header from '../Header/Header';
+import ListProd from '../ListProd/ListProd';
 import Footer from '../Footer/Footer';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         isOpen={'isNavMenuOpen'}
         onClose={'closeNavMenu'}
       />
+      <ListProd />
       {/* <Main /> */}
       <Footer />
     </div>
