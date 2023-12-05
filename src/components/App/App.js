@@ -8,7 +8,12 @@ import Footer from '../Footer/Footer';
 function App() {
   return (
     <div className="page page__spacing">
-      <Header />
+      <Header
+        loggedIn={'loggedIn'}
+        onNavMenu={'handleNavMenuClick'}
+        isOpen={'isNavMenuOpen'}
+        onClose={'closeNavMenu'}
+      />
       {/* <Main /> */}
       <Footer />
     </div>

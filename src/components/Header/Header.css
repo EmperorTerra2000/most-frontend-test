@@ -1,4 +1,4 @@
-.header{
+.header {
   min-height: 60px;
 }
 
@@ -8,4 +8,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.header__nav-block {
+  position: absolute;
+  right: 6%;
+}
+
+.header__nav {
+  transition: all 800ms;
+  cursor: pointer;
+}
+
+.header__nav:hover {
+  color: white;
+  transform: scale(1.2);
 }
