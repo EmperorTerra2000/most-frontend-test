@@ -3,7 +3,7 @@ import './Card.css';
 import { Link } from 'react-router-dom';
 
 function Card({ data }) {
-  const pathUrl = '/product/?key=' + data.id;
+  const pathUrl = '/product/?id=' + data.id;
 
   const styleLinkMoreDetails = {
     textDecoration: 'none',

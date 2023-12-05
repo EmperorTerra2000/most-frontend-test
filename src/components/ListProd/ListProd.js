@@ -2,23 +2,10 @@ import './ListProd.css';
 
 import ListProdContent from '../ListProdContent/ListProdContent';
 import Filter from '../Filter/Filter';
-import api from '../../utils/Api';
 
 import React from 'react';
 
-function ListProd() {
-  const [cards, setCards] = React.useState([]);
-
-  React.useEffect(() => {
-    handleImportCards();
-  }, []);
-
-  function handleImportCards() {
-    api.getCards().then((cards) => {
-      setCards(cards.products);
-    });
-  }
-
+function ListProd({ cards }) {
   console.log(cards);
 
   return (
@@ -26,7 +13,6 @@ function ListProd() {
       <Filter />
       <ListProdContent
         cards={cards}
-        setCards={setCards}
         // onDeleteCard={onDeleteCard}
         // handleAddTask={handleAddTask}
         // handleChangeTheme={handleChangeTheme}

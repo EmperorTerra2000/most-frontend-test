@@ -7,13 +7,13 @@ import Card from '../Card/Card';
 
 function ListProdContent({
   cards,
-  setCards,
   // onDeleteCard,
   // handleAddTask,
   // handleChangeTheme,
   // handleChangeTodo,
   // handleDeleteTodo,
 }) {
+  console.log(cards);
   // function onChange(sourceId, sourceIndex, targetIndex) {
   //   const nextState = swap(cards, sourceIndex, targetIndex);
   //   setCards(nextState);

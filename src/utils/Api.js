@@ -9,9 +9,16 @@ class Api {
     return res.json();
   }
 
-  //импорт из файла
+  //список карточек
   getCards() {
     return fetch(`${this.url}/products`, {
+      method: 'GET',
+    }).then(this._handleResponse);
+  }
+
+  //список карточек
+  getCardId(id) {
+    return fetch(`${this.url}/products/${id}`, {
       method: 'GET',
     }).then(this._handleResponse);
   }
