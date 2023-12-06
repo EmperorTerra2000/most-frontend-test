@@ -13,7 +13,6 @@ function ListProdContent({
   // handleChangeTodo,
   // handleDeleteTodo,
 }) {
-  console.log(cards);
   // function onChange(sourceId, sourceIndex, targetIndex) {
   //   const nextState = swap(cards, sourceIndex, targetIndex);
   //   setCards(nextState);

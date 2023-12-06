@@ -6,8 +6,6 @@ import Filter from '../Filter/Filter';
 import React from 'react';
 
 function ListProd({ cards }) {
-  console.log(cards);
-
   return (
     <>
       <Filter />

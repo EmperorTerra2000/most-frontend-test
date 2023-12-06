@@ -9,7 +9,6 @@ function Card({ data }) {
     textDecoration: 'none',
     display: 'block',
     color: '#444444',
-    fontSize: '17px',
   };
 
   const styleLinkImg = {
