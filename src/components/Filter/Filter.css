@@ -9,10 +9,24 @@
   border-radius: 5px;
 }
 
+.filter__search-box_type_block-filter {
+  background: transparent;
+}
+
 .filter__row {
   display: flex;
   align-items: center;
   padding: 10px 20px;
+  border-bottom: 2px solid #afafaf;
+}
+
+.filter__row_type_block-filter,
+.filter__row_type_block-filter input {
+  cursor: pointer;
+}
+
+.filter__row_type_block-filter input {
+  z-index: -1;
 }
 
 .filter__row input {
@@ -37,6 +51,16 @@
   max-height: 180px;
   width: 360px;
   overflow-y: scroll;
+}
+
+.filter__result-box_type_block-filter {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.filter__result-box_active {
+  visibility: visible;
+  opacity: 1;
 }
 
 .filter__result-box ul {

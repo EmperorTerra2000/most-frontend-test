@@ -11,6 +11,7 @@ import api from '../../utils/Api';
 
 function App() {
   const [cards, setCards] = React.useState([]);
+  const [cardsView, setCardsView] = React.useState([]);
 
   React.useEffect(() => {
     handleImportCards();
@@ -19,6 +20,7 @@ function App() {
   function handleImportCards() {
     api.getCards().then((cards) => {
       setCards(cards.products);
+      setCardsView(cards.products);
     });
   }
 
@@ -32,7 +34,10 @@ function App() {
       />
 
       <Routes>
-        <Route path="/" element={<ListProd cards={cards} />} />
+        <Route
+          path="/"
+          element={<ListProd cards={cards} cardsView={cardsView} setCardsView={setCardsView} />}
+        />
         <Route path="/product/*" element={<ProductPage />} />
         <Route path="*" element={<div>Not found App</div>} />
       </Routes>

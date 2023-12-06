@@ -5,12 +5,12 @@ import Filter from '../Filter/Filter';
 
 import React from 'react';
 
-function ListProd({ cards }) {
+function ListProd({ cards, cardsView, setCardsView }) {
   return (
     <>
-      <Filter />
+      <Filter cards={cards} cardsView={cardsView} setCardsView={setCardsView} />
       <ListProdContent
-        cards={cards}
+        cards={cardsView}
         // onDeleteCard={onDeleteCard}
         // handleAddTask={handleAddTask}
         // handleChangeTheme={handleChangeTheme}
