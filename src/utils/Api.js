@@ -22,6 +22,43 @@ class Api {
       method: 'GET',
     }).then(this._handleResponse);
   }
+
+  authorization(username, password) {
+    return fetch(`${this.url}/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    })
+      .then((res) => {
+        console.log(res);
+        if (!res.ok) return Promise.reject(`Ошибка: ${res.status}`);
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+        if (data.token) {
+          localStorage.setItem('token', data.token);
+          return data;
+        } else return;
+      }); //присваиваем токен JWT к локальному хранилищу localStotage
+  }
+
+  //передача токена из локалсторадж на сервер с тем, чтобы проверить на их соответствие
+  getContent(token) {
+    return fetch(`${this.url}/auth/RESOURCE`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => {
+      if (!res.ok) return Promise.reject(`Ошибка: ${res.status}`);
+      return res.json();
+    });
+  }
 }
 
 const api = new Api({

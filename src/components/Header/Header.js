@@ -19,12 +19,12 @@ function Header({ isOpen, onClose, loggedIn }) {
         </p>
         <div className="header__nav-block">
           {loggedIn ? (
-            <Link to="/signin" style={styleLink}>
-              <p className="header__nav font-medium">Sign in</p>
-            </Link>
-          ) : (
             <Link to="/profile" style={styleLink}>
               <p className="header__nav font-medium">Profile</p>
+            </Link>
+          ) : (
+            <Link to="/signin" style={styleLink}>
+              <p className="header__nav font-medium">Sign in</p>
             </Link>
           )}
         </div>
