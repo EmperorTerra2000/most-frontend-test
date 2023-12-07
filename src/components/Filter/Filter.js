@@ -11,13 +11,13 @@ function Filter({ cards, setCardsView, cardsView }) {
         <div className="filter__content">
           <BlockSort cardsView={cardsView} setCardsView={setCardsView} />
           <BlockFilter
-            placeholder="Фильтр"
+            placeholder="Фильтр (выбрать)"
             setValueCategory={setValueCategory}
             cards={cards}
             setCardsView={setCardsView}
           />
           <FilterSearchBox
-            placeholder="Поиск"
+            placeholder="Поиск (введите слово)"
             valueCategory={valueCategory}
             cards={cards}
             setCardsView={setCardsView}
@@ -29,6 +29,9 @@ function Filter({ cards, setCardsView, cardsView }) {
 }
 
 function BlockSort(props) {
+  const [isDescendingActive, setIsDescendingActive] = React.useState(false);
+  const [isAskendingActive, setIsAskendingActive] = React.useState(false);
+
   const compareDescending = (a, b) => {
     return Number(b.price) - Number(a.price);
   };
@@ -39,12 +42,18 @@ function BlockSort(props) {
 
   const handleClickSort = (event) => {
     if (event.currentTarget.id === 'descending') {
+      setIsAskendingActive(false);
+      setIsDescendingActive(true);
+
       props.setCardsView((data) => {
         const dataToSort = [...data];
         dataToSort.sort(compareDescending);
         return dataToSort;
       });
     } else if (event.currentTarget.id === 'askending') {
+      setIsDescendingActive(false);
+      setIsAskendingActive(true);
+
       props.setCardsView((data) => {
         const dataToSort = [...data];
         dataToSort.sort(compareAscending);
@@ -56,13 +65,23 @@ function BlockSort(props) {
   return (
     <>
       <div className="filter__block-sort">
-        <p className="filter__block-sort_title">Сортировать по стоимости </p>
+        <p className="filter__block-sort_title">Сортировать по стоимости:</p>
         <div className="filter__block-sort_box">
-          <p className="filter__block-sort_el" onClick={handleClickSort} id="descending">
-            По убыванию
+          <p
+            className={`filter__block-sort_el ${
+              isDescendingActive ? 'filter__block-sort_el_active' : ''
+            }`}
+            onClick={handleClickSort}
+            id="descending">
+            по убыванию
           </p>
-          <p className="filter__block-sort_el" onClick={handleClickSort} id="askending">
-            По возрастанию
+          <p
+            className={`filter__block-sort_el ${
+              isAskendingActive ? 'filter__block-sort_el_active' : ''
+            }`}
+            onClick={handleClickSort}
+            id="askending">
+            по возрастанию
           </p>
         </div>
       </div>

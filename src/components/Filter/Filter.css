@@ -1,16 +1,24 @@
 .filter {
   margin-top: 40px;
 }
+
+.filter__content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .filter__search-box {
   position: relative;
   width: 360px;
   background-color: #fff;
-  margin: 20px auto 0;
+  margin: 20px 20px 0 0;
   border-radius: 5px;
 }
 
 .filter__search-box_type_block-filter {
   background: transparent;
+  width: 270px;
 }
 
 .filter__row {
@@ -55,6 +63,7 @@
 
 .filter__result-box_type_block-filter {
   visibility: hidden;
+  width: 270px;
   opacity: 0;
 }
 
@@ -78,4 +87,23 @@
 
 .filter__result-box ul li:hover {
   background: #e9f3ff;
+}
+
+.filter__block-sort {
+  margin-right: 40px;
+}
+
+.filter__block-sort_title {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.filter__block-sort_el {
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.filter__block-sort_el_active {
+  border-bottom: 1px solid #afafaf;
+  color: green;
 }
