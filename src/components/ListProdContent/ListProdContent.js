@@ -3,27 +3,21 @@ import './ListProdContent.css';
 import React from 'react';
 import Card from '../Card/Card';
 
-// import Card from '../Card/Card';
-
-function ListProdContent({
-  cards,
-  // onDeleteCard,
-  // handleAddTask,
-  // handleChangeTheme,
-  // handleChangeTodo,
-  // handleDeleteTodo,
-}) {
-  // function onChange(sourceId, sourceIndex, targetIndex) {
-  //   const nextState = swap(cards, sourceIndex, targetIndex);
-  //   setCards(nextState);
-  // }
-
+function ListProdContent({ cards, cardsShop, handleClickShopCard }) {
   return (
     <>
       <section className="list-prod-content">
         <div className="list-prod-content__content">
           <ul className="list-prod-content__list">
-            {cards && cards.map((item, index) => <Card key={item.id} data={item} />)}
+            {cards &&
+              cards.map((item, index) => (
+                <Card
+                  key={item.id}
+                  data={item}
+                  cardsShop={cardsShop}
+                  clickShopCard={handleClickShopCard}
+                />
+              ))}
           </ul>
         </div>
       </section>

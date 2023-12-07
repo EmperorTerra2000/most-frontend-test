@@ -1,9 +1,24 @@
 import './Card.css';
 
 import { Link } from 'react-router-dom';
+import React from 'react';
 
-function Card({ data }) {
+function Card({ data, cardsShop, clickShopCard }) {
+  const ref = React.useRef(null);
   const pathUrl = '/product/?id=' + data.id;
+
+  React.useEffect(() => {
+    if (cardsShop) {
+      const result = cardsShop.find((item, index) => {
+        return item.id === data.id;
+      });
+
+      if (result) {
+        ref.current.innerText = 'Добавлен';
+        ref.current.setAttribute('disabled', 'disabled');
+      }
+    }
+  }, [cardsShop]);
 
   const styleLinkMoreDetails = {
     textDecoration: 'none',
@@ -42,6 +57,14 @@ function Card({ data }) {
               Подробнее
             </Link>
           </div>
+          <button
+            className="card__section"
+            ref={ref}
+            onClick={() => {
+              clickShopCard(data);
+            }}>
+            В корзину
+          </button>
         </figcaption>
       </figure>
     </>

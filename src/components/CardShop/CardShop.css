@@ -1,39 +1,37 @@
-.card {
+.card-shop {
   box-sizing: border-box;
   flex: 0 1 198px;
-  margin: 0;
-  margin-right: 30px;
-  margin-bottom: 48px;
   display: flex;
-  flex-flow: column;
   align-items: center;
   justify-content: space-between;
-  min-height: 300px;
-  max-height: 321px;
+  min-height: 177px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 11px;
   transition: box-shadow linear 1ms;
-  padding: 15px 7px;
+  padding: 15px 35px;
+  margin-bottom: 17px;
 }
 
-.card__name {
+.card-shop__name {
   margin-bottom: 6px;
   font-size: 16px;
   line-height: 18px;
   text-align: center;
 }
 
-.card__price {
+.card-shop__price {
   text-align: center;
-  margin-bottom: 38px;
+  margin-bottom: 26px;
 }
 
-.card__section {
-  margin: 0 auto;
+.card-shop__block {
   display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-shop__section {
+  align-self: flex-end;
   width: 120px;
   line-height: 24px;
   border: 1px solid rgb(56, 168, 196);
@@ -44,11 +42,11 @@
   cursor: pointer;
 }
 
-.card__section:hover {
+.card-shop__section:hover {
   background-color: #dbdada;
 }
 
-.card__request {
+.card-shop__request {
   background-color: transparent;
   color: #444444;
   border: 1px solid rgba(0, 0, 0, 0.5);
@@ -61,36 +59,36 @@
   box-shadow: 0 3px 15px 0 rgba(161, 161, 161, 0.4);
 }
 
-.card__request:hover {
+.card-shop__request:hover {
   background-color: #7bd17b;
 }
 
-.card__detailed {
+.card-shop__detailed {
   text-decoration: none;
   display: block;
   color: #444444;
   font-size: 12px;
 }
 
-.card:nth-child(5n) {
+.card-shop:nth-child(5n) {
   margin-right: 0;
 }
 
-.card:last-of-type {
+.card-shop:last-of-type {
   margin-right: 0;
 }
 
-.card__img {
-  max-width: 168px;
-  height: 100%;
+.card-shop__img {
+  max-width: 208px;
+  height: 170px;
   object-fit: contain;
   object-position: center;
 }
 
-.card:hover {
+.card-shop:hover {
   box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.5);
 }
 
-.card:active {
+.card-shop:active {
   box-shadow: inset 0 2px 7px rgba(0, 0, 0, 0.5);
 }

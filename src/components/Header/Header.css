@@ -16,8 +16,28 @@
   border-radius: 7px;
   padding: 5px 9px;
   position: absolute;
-  right: 6%;
+  right: 15%;
   transition: all 800ms;
+}
+
+.header__nav-block_shop {
+  border: 1px solid white;
+  border-radius: 7px;
+  padding: 5px 9px;
+  position: absolute;
+  right: 3%;
+  transition: all 800ms;
+}
+
+.header__nav-block_shop-count {
+  background-color: red;
+  width: 32px;
+  height: 23px;
+  border-radius: 11px;
+  position: absolute;
+  right: 7px;
+  text-align: center;
+  padding-top: 4px;
 }
 
 .header__nav {

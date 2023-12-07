@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import './Header.css';
 
-function Header({ isOpen, onClose, loggedIn }) {
+function Header({ loggedIn, amountShop }) {
   const styleLink = {
     display: 'block',
     textDecoration: 'none',
@@ -28,6 +28,12 @@ function Header({ isOpen, onClose, loggedIn }) {
             </Link>
           )}
         </div>
+        <div className="header__nav-block_shop">
+          <Link to="/shop" style={styleLink}>
+            <p className="header__nav font-medium">Корзина</p>
+          </Link>
+        </div>
+        <div className="header__nav-block_shop-count">{amountShop}</div>
       </div>
     </header>
   );

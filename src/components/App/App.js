@@ -8,6 +8,7 @@ import ListProd from '../ListProd/ListProd';
 import SignInPage from '../SignInPage/SignInPage';
 import ProductPage from '../ProductPage/ProductPage';
 import ProfilePage from '../ProfilePage/ProfilePage';
+import ShopPage from '../ShopPage/ShopPage';
 import Footer from '../Footer/Footer';
 import api from '../../utils/Api';
 
@@ -16,11 +17,20 @@ function App() {
   const [profileData, setProfileData] = React.useState({});
   const [cards, setCards] = React.useState([]);
   const [cardsView, setCardsView] = React.useState([]);
+  const [cardsShop, setCardsShop] = React.useState([]);
   const [loggedIn, setLoggedIn] = React.useState(false);
 
   React.useEffect(() => {
     tokenCheck();
     handleImportCards();
+
+    if (localStorage.getItem('cardsShop')) {
+      const newCardsShop = JSON.parse(localStorage.getItem('cardsShop'));
+
+      setCardsShop(newCardsShop);
+    } else {
+      localStorage.setItem('cardsShop', '[]');
+    }
   }, []);
 
   function handleImportCards() {
@@ -28,6 +38,20 @@ function App() {
       setCards(cards.products);
       setCardsView(cards.products);
     });
+  }
+
+  function handleDeleteCardShop(id) {
+    const newCardsShop = cardsShop.filter((item) => item.id !== id);
+
+    localStorage.setItem('cardsShop', JSON.stringify(newCardsShop));
+    setCardsShop(newCardsShop);
+  }
+
+  function handleClickShopCard(data) {
+    const newCardsShop = JSON.parse(localStorage.getItem('cardsShop'));
+    newCardsShop.push(data);
+    localStorage.setItem('cardsShop', JSON.stringify(newCardsShop));
+    setCardsShop(newCardsShop);
   }
 
   function tokenCheck() {
@@ -68,15 +92,16 @@ function App() {
 
   return (
     <div className="page page__spacing">
-      <Header
-        loggedIn={loggedIn}
-        onNavMenu={'handleNavMenuClick'}
-        isOpen={'isNavMenuOpen'}
-        onClose={'closeNavMenu'}
-      />
+      <Header loggedIn={loggedIn} amountShop={cardsShop.length} />
       <Switch>
         <Route path="/" exact>
-          <ListProd cards={cards} cardsView={cardsView} setCardsView={setCardsView} />
+          <ListProd
+            cards={cards}
+            cardsView={cardsView}
+            cardsShop={cardsShop}
+            setCardsView={setCardsView}
+            handleClickShopCard={handleClickShopCard}
+          />
         </Route>
         <Route path="/signin" exact>
           <SignInPage
@@ -88,6 +113,9 @@ function App() {
         </Route>
         <Route path="/profile" exact>
           <ProfilePage profileData={profileData} />
+        </Route>
+        <Route path="/shop" exact>
+          <ShopPage cardsShop={cardsShop} handleDeleteCardShop={handleDeleteCardShop} />
         </Route>
         <Route path="/product/*">
           <ProductPage />
