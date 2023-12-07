@@ -37,17 +37,12 @@ function SignInPage(props) {
     api
       .authorization(username, password)
       .then((data) => {
-        console.log('asdwfasdfwa');
-        console.log(data);
         if (data.token) {
-          console.log(data);
           setUserData({ username: '', password: '' }); //сбрасываем инпуты у формы
           localStorage.setItem('token', data.token);
+          props.setProfileData(data);
           props.handleLogin();
           props.history.push('/');
-          // props.tokenCheck(); //обновление статуса юзера после авторизации
-          // props.setPopup({ isOpen: true, isValid: true }); //открытие успешного попапа
-          // props.history.push('/main');
         }
       })
       .catch((err) => {

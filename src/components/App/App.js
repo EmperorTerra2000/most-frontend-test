@@ -7,11 +7,13 @@ import Header from '../Header/Header';
 import ListProd from '../ListProd/ListProd';
 import SignInPage from '../SignInPage/SignInPage';
 import ProductPage from '../ProductPage/ProductPage';
+import ProfilePage from '../ProfilePage/ProfilePage';
 import Footer from '../Footer/Footer';
 import api from '../../utils/Api';
 
 function App() {
   const history = useHistory();
+  const [profileData, setProfileData] = React.useState({});
   const [cards, setCards] = React.useState([]);
   const [cardsView, setCardsView] = React.useState([]);
   const [loggedIn, setLoggedIn] = React.useState(false);
@@ -72,13 +74,20 @@ function App() {
         isOpen={'isNavMenuOpen'}
         onClose={'closeNavMenu'}
       />
-
       <Switch>
         <Route path="/" exact>
           <ListProd cards={cards} cardsView={cardsView} setCardsView={setCardsView} />
         </Route>
         <Route path="/signin" exact>
-          <SignInPage loggedIn={loggedIn} history={history} handleLogin={handleLogin} />
+          <SignInPage
+            loggedIn={loggedIn}
+            history={history}
+            handleLogin={handleLogin}
+            setProfileData={setProfileData}
+          />
+        </Route>
+        <Route path="/profile" exact>
+          <ProfilePage profileData={profileData} />
         </Route>
         <Route path="/product/*">
           <ProductPage />

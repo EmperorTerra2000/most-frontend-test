@@ -33,12 +33,10 @@ class Api {
       }),
     })
       .then((res) => {
-        console.log(res);
         if (!res.ok) return Promise.reject(`Ошибка: ${res.status}`);
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         if (data.token) {
           localStorage.setItem('token', data.token);
           return data;
