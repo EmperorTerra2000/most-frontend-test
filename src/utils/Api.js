@@ -1,38 +1,66 @@
-class Api{
-  constructor(options){
+class Api {
+  constructor(options) {
     this.url = options.url;
   }
 
   //обработка ответа от сервера
-  _handleResponse(res){
-    if(!res.ok) Promise.reject(`Ошибка: ${res.status}`);
+  _handleResponse(res) {
+    if (!res.ok) Promise.reject(`Ошибка: ${res.status}`);
     return res.json();
   }
 
-  //импорт из файла
-  importCardInfo(){
-    return fetch(`${this.url}/import`, {
+  //список карточек
+  getCards() {
+    return fetch(`${this.url}/products`, {
       method: 'GET',
-    })
-      .then(this._handleResponse);
+    }).then(this._handleResponse);
   }
 
-  //экспорт в файл
-  exportCardInfo(data){
-    return fetch(`${this.url}/export`, {
+  //список карточек
+  getCardId(id) {
+    return fetch(`${this.url}/products/${id}`, {
+      method: 'GET',
+    }).then(this._handleResponse);
+  }
+
+  authorization(username, password) {
+    return fetch(`${this.url}/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    })
+      .then((res) => {
+        if (!res.ok) return Promise.reject(`Ошибка: ${res.status}`);
+        return res.json();
+      })
+      .then((data) => {
+        if (data.token) {
+          localStorage.setItem('token', data.token);
+          return data;
+        } else return;
+      }); //присваиваем токен JWT к локальному хранилищу localStotage
+  }
+
+  //передача токена из локалсторадж на сервер с тем, чтобы проверить на их соответствие
+  getContent(token) {
+    return fetch(`${this.url}/auth/RESOURCE`, {
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
       },
-      method: 'POST',
-      body: JSON.stringify(data),
-    })
-      .then(this._handleResponse);
+    }).then((res) => {
+      if (!res.ok) return Promise.reject(`Ошибка: ${res.status}`);
+      return res.json();
+    });
   }
 }
 
-
 const api = new Api({
-  url: 'http://localhost:3100'
+  url: 'https://dummyjson.com',
 });
 
 export default api;
