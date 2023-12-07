@@ -3,6 +3,7 @@
 }
 
 .header__content {
+  position: relative;
   background-color: rgb(71, 116, 95);
   min-height: 74px;
   display: flex;
@@ -11,16 +12,18 @@
 }
 
 .header__nav-block {
+  border: 1px solid white;
+  border-radius: 7px;
+  padding: 5px 9px;
   position: absolute;
   right: 6%;
+  transition: all 800ms;
 }
 
 .header__nav {
-  transition: all 800ms;
   cursor: pointer;
 }
 
-.header__nav:hover {
-  color: white;
-  transform: scale(1.2);
+.header__nav-block:hover {
+  transform: scale(1.15);
 }
